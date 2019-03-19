@@ -1,52 +1,27 @@
 #board{
 	background: black;
-	height:310px;
-	width:310px;
-	margin: auto;
+	height: 94vw;
+	width: 94vw;
+	max-height: 600px;
+	max-width: 600px;
+	margin: 3vw;
 	display: grid;
-	grid-template-columns: repeat(3,100px);
-	grid-template-rows: repeat(3,100px);
-	grid-gap: 5px;
+	grid-template-columns: repeat(3,minmax(30vw,50vmax));
+	grid-template-rows: repeat(3,minmax(30vw,100px));
+	grid-gap: 2vw;
 }
 
 .box{
-  /* height: auto;
-  width: auto; */
 	background-color: grey;
-	text-align: center;
+	/* padding: auto; */
 }
 
 .xoInput{
-	font-size: 45px;
+	/* font-size: 10vw; */
 	/* text-align: center; */
+	/* margin: 50%; */
 }
 
-
-
-/* #c1{
-	background-color:red;
+#title{
+	text-align: center;
 }
-#c2{
-	background-color:green;
-}
-#c3{
-	background-color:blue;
-}
-#c4{
-	background-color:yellow;
-}
-#c5{
-	background-color:orange;
-}
-#c6{
-	background-color:cyan;
-}
-#c7{
-	background-color:magenta;
-}
-#c8{
-	background-color:grey;
-}
-#c9{
-	background-color:violet;
-} */

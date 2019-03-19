@@ -1,0 +1,52 @@
+#board{
+	background: black;
+	height:310px;
+	width:310px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(3,100px);
+	grid-template-rows: repeat(3,100px);
+	grid-gap: 5px;
+}
+
+.box{
+  /* height: auto;
+  width: auto; */
+	background-color: grey;
+	text-align: center;
+}
+
+.xoInput{
+	font-size: 45px;
+	/* text-align: center; */
+}
+
+
+
+/* #c1{
+	background-color:red;
+}
+#c2{
+	background-color:green;
+}
+#c3{
+	background-color:blue;
+}
+#c4{
+	background-color:yellow;
+}
+#c5{
+	background-color:orange;
+}
+#c6{
+	background-color:cyan;
+}
+#c7{
+	background-color:magenta;
+}
+#c8{
+	background-color:grey;
+}
+#c9{
+	background-color:violet;
+} */

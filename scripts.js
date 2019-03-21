@@ -1,175 +1,195 @@
+/* 
+Contributers:
+
+PowerBlade
+AG-Labs
+
+*/
+
 var xo=true;
-var sq1=0;
-var sq2=0;
-var sq3=0;
-var sq4=0;
-var sq5=0;
-var sq6=0;
-var sq7=0;
-var sq8=0;
-var sq9=0;
-// adding x or o
-$(document).ready(function(){
-	
-  $("#c1").click(function() {
-    if (document.getElementById('box1').innerHTML=="") {
-      if(xo==true){
-				document.getElementById('box1').innerHTML="X";
-				sq1=1;
-				xo=!xo;
-      }else if(xo==false){
-				document.getElementById('box1').innerHTML="O";
-				sq1=(-1);
-				xo=!xo;
+var option=1;
+
+let gameBoard = {
+	squarsArray:	[
+		[0,0,0],
+		[0,0,0],
+		[0,0,0]
+	],
+
+	printBoard: function(){
+		for(i=0;i<3;i++){
+			console.log(this.squarsArray[i]);
+		}
+	},
+
+	winCheck: function(){
+		this.printBoard();
+		let gameFin = false;
+		let winX, who;
+		[winX, who] = this.sumRows();
+		if (winX){
+			gameFin = true;
+			return [gameFin, who]
+		}
+		[winY, who] = this.sumCols();
+		if (winY){
+			gameFin = true;
+			return [gameFin, who]
+		}
+		[winXY, who] = this.sumDiags();
+		if (winXY){
+			gameFin = true;	
+			return [gameFin, who]
+		}
+
+		return [gameFin, who]
+	},
+
+
+	sumRows: function(){
+		let rows = [0,0,0];
+		let win = false;
+		let winner ="";
+
+		for (i=0; i<3; i++) {
+			for (j=0; j<3; j++) {
+				rows[i] = rows[i] + this.squarsArray[i][j];
 			}
 		}
-		win();	
-	});
+		for (i=0;i<3;i++) {
+			if (rows[i] == 3){
+				win = true;
+				winner = "X";
+			}
+			if (rows[i] == -3){
+				win = true;
+				winner = "O";
+			}
+		}
+		return [win, winner];
+	},
+	sumCols: function(){
+		let cols = [0,0,0];
+		let win = false;
+		let winner = "";
+		for (i=0; i<3; i++) {
+			for (j=0; j<3; j++) {
+				cols[i] = cols[i] + this.squarsArray[j][i];
+			}
+		}
+		for (i=0;i<3;i++) {
+			if (cols[i] == 3) {
+				win = true;
+				winner = "X";
+			}
+			if (cols[i] == -3) {
+				win = true;
+				winner = "O";			
+			}
+		}
+		return [win, winner];
+	},
+	sumDiags: function(){
+		let diags = [0,0];
+		let win = false;
+		let winner = "";
 
-	$("#c2").click(function() {
-    if (document.getElementById('box2').innerHTML=="") {
-      if(xo==true){
-				document.getElementById('box2').innerHTML="X";
-				sq2=1;
-				xo=!xo;
-      }else if(xo==false){
-				document.getElementById('box2').innerHTML="O";
-				sq2=(-1);
-				xo=!xo;
-			}
-    }
-		win();
-	});
-	
-	$("#c3").click(function() {
-    if (document.getElementById('box3').innerHTML=="") {
-      if(xo==true){
-        document.getElementById('box3').innerHTML="X";
-				sq3=1;
-				xo=!xo;
-      }else if(xo==false){
-				document.getElementById('box3').innerHTML="O";
-				sq3=(-1);
-				xo=!xo;
-			}
-    }
-		win();
-	});
-	
-	$("#c4").click(function() {
-    if (document.getElementById('box4').innerHTML=="") {
-      if(xo==true){
-        document.getElementById('box4').innerHTML="X";
-				sq4=1;
-				xo=!xo;
-      }else if(xo==false){
-				document.getElementById('box4').innerHTML="O";
-				sq4=(-1);
-				xo=!xo;
-			}
-    }
-		win();
-	});
-	
-	$("#c5").click(function() {
-    if (document.getElementById('box5').innerHTML=="") {
-      if(xo==true){
-        document.getElementById('box5').innerHTML="X";
-				sq5=1;
-				xo=!xo;
-      }else if(xo==false){
-				document.getElementById('box5').innerHTML="O";
-				sq5=(-1);
-				xo=!xo;
-			}
-    }
-		win();
-	});
-	
-	$("#c6").click(function() {
-    if (document.getElementById('box6').innerHTML=="") {
-      if(xo==true){
-        document.getElementById('box6').innerHTML="X";
-				sq6=1;
-				xo=!xo;
-      }else if(xo==false){
-				document.getElementById('box6').innerHTML="O";
-				sq6=(-1);
-				xo=!xo;
-			}
-    }
-		win();
-	});
-	
-	$("#c7").click(function() {
-    if (document.getElementById('box7').innerHTML=="") {
-      if(xo==true){
-        document.getElementById('box7').innerHTML="X";
-				sq7=1;
-				xo=!xo;
-      }else if(xo==false){
-				document.getElementById('box7').innerHTML="O";
-				sq7=(-1);
-				xo=!xo;
-			}
-    }
-		win();
-	});
-	
-	$("#c8").click(function() {
-    if (document.getElementById('box8').innerHTML=="") {
-      if(xo==true){
-        document.getElementById('box8').innerHTML="X";
-				sq8=1;
-				xo=!xo;
-      }else if(xo==false){
-				document.getElementById('box8').innerHTML="O";
-				sq8=(-1);
-				xo=!xo;
-			}
-    }
-		win();
-	});
-	
-	$("#c9").click(function() {
-    if (document.getElementById('box9').innerHTML=="") {
-      if(xo==true){
-        document.getElementById('box9').innerHTML="X";
-				sq9=1;
-				xo=!xo;
-      }else if(xo==false){
-				document.getElementById('box9').innerHTML="O";
-				sq9=(-1);
-				xo=!xo;
-			}
-    }
-		win();
-	});
-});
+		diags[0] = this.squarsArray[0][0] +this.squarsArray[1][1]+this.squarsArray[2][2];
+		diags[1] = this.squarsArray[0][2] +this.squarsArray[1][1]+this.squarsArray[2][0];
 
-//specifying win conditions
-function win() {
-	if ((sq1+sq2+sq3)==3 || (sq4+sq5+sq6)==3 || (sq7+sq8+sq9)==3 || (sq1+sq4+sq7)==3 || (sq2+sq5+sq8)==3 || (sq3+sq6+sq9)==3 || (sq1+sq5+sq9)==3 || (sq3+sq5+sq7)==3) {
-		alert("x is the winner");
-		reset();
-	} else if ((sq1+sq2+sq3)==-3 || (sq4+sq5+sq6)==-3 || (sq7+sq8+sq9)==-3 || (sq1+sq4+sq7)==-3 || (sq2+sq5+sq8)==-3 || (sq3+sq6+sq9)==-3 || (sq1+sq5+sq9)==-3 || (sq3+sq5+sq7)==-3){
-		alert("o is the winner");
-		reset();
-	} else if ((sq1!=0) && (sq2!=0) && (sq3!=0) && (sq4!=0) && (sq5!=0) && (sq6!=0) && (sq7!=0) && (sq8!=0) && (sq9!=0)){
-		alert("its a draw");
-		reset();
+		for (i=0;i<2;i++)
+		if (diags[i] == 3){
+			win = true;
+			winner ="X";
+		}
+		if (diags[i] == -3){
+			win = true
+			winner = "O";
+		}
+		return [win, winner];
 	}
 }
 
-function reset(){
-	sq1=sq2=sq3=sq4=sq5=sq6=sq7=sq8=sq9=0;
-	document.getElementById('box1').innerHTML="";
-	document.getElementById('box2').innerHTML="";
-	document.getElementById('box3').innerHTML="";
-	document.getElementById('box4').innerHTML="";
-	document.getElementById('box5').innerHTML="";
-	document.getElementById('box6').innerHTML="";
-	document.getElementById('box7').innerHTML="";
-	document.getElementById('box8').innerHTML="";
-	document.getElementById('box9').innerHTML="";
+function winnerInfo(winner) {
+	document.getElementById("winner").innerHTML = winner + " has won the game";
+}
+
+// adding x or o
+if (option!==0) {
+	$(document).ready(function(){
+	
+		$(".box").click( function(){
+			let sqaure = $(this).data('numberlk')
+			let currID = this.id;
+			let yVal = Math.floor((sqaure-1)/3);
+			let xVal = ((sqaure-1)%3);
+			if (document.getElementById(currID).innerHTML==""){
+				if(xo==true){
+					document.getElementById(currID).innerHTML = "<p>X</p>";
+					gameBoard.squarsArray[yVal][xVal] = 1;
+					xo=!xo;
+				} else if (xo == false){
+					document.getElementById(currID).innerHTML = "<p>O</p>";
+					gameBoard.squarsArray[yVal][xVal] = - 1;
+					xo=!xo;
+				}
+				//win stuff here
+				let [end, winner] = gameBoard.winCheck();
+				if (end) {
+					winnerInfo(winner);
+					reset();
+				}
+			}
+			pcEasy();	
+		});
+	});
+}
+
+
+function reset() {
+
+	for (i=0;i<3;i++){
+		for(j=0;j<3; j++){
+			gameBoard.squarsArray[i][j]=0;
+		}
+	}
+
+	for(i=1;i<10;i++){
+		document.getElementById("c"+i).innerHTML="";
+	}
+}
+
+
+
+/* playing against the computer */
+function pcEasy(){
+	if (xo==false && option==2) {
+		var counter=0;
+		do {
+			
+			var rNumH = Math.floor(Math.random() * 3);
+			var rNumV = Math.floor(Math.random() * 3);
+			var chosenNum=3*(rNumH)+(rNumV)+1;
+			if (document.getElementById("c"+chosenNum).innerHTML=="") {
+				document.getElementById("c"+chosenNum).innerHTML="<p>O</p>";
+				gameBoard.squarsArray[rNumH][rNumV] = - 1;
+				xo=!xo;
+				break;
+			}
+			console.log(counter+=1);
+		} while (counter<10);
+		let [end, winner] = gameBoard.winCheck();
+			if (end) {
+				winnerInfo(winner);
+				reset();
+			}	
+	}
+}
+
+function pvp() {
+	option=1;
+}
+
+function pvc() {
+	option=2;
 }

@@ -1,29 +1,39 @@
 #board{
 	background: black;
-	height: 94vw;
-	width: 94vw;
-	max-height: 600px;
-	max-width: 600px;
-	margin: 3vw;
+	height: 62vw;
+	width: 62vw;
+	max-height: 70vh;
+	max-width: 70vh;
+	margin: 0 auto;
 	display: grid;
-	grid-template-columns: repeat(3,minmax(30vw,50vmax));
-	grid-template-rows: repeat(3,minmax(30vw,100px));
-	grid-gap: 2vw;
+	grid-template-columns: repeat(3,1fr);
+	grid-template-rows: repeat(3,1fr);
+	grid-gap: 1vw;
+	font-size: 10vw;
+	border: 10px blue; /*fix this */
 }
 
 .box{
 	background-color: grey;
+	display: inline; 
+	font-size: 1em;
+	text-align: center;
+	line-height: 0px;
+	font-family: Helvetica, Arial;
 	/* padding: auto; */
 }
 
-.xoInput{
-	/* font-size: 10vw; */
-	/* text-align: center; */
-	/* margin: 50%; */
-}
+@media screen and (min-width: 850px) {
+	.box {
+	   font-size: 84px;
+	}
+  }
+
 
 #title{
+	font-family: Verdana, Arial;
 	text-align: center;
+	
 }
 
 /*testing */

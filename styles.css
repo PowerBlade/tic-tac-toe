@@ -14,16 +14,13 @@
 .box{
 	background-color: grey;
 	display: inline;
-	/* padding: auto; */
-}
-
-.xoInput{
 	font-size: 50px;
 	text-align: center;
 	line-height: 0px;
 	font-family: Helvetica, Arial;
-	/* margin: 50%; */
+	/* padding: auto; */
 }
+
 
 #title{
 	font-family: Verdana, Arial;

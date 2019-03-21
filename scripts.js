@@ -1,12 +1,13 @@
 /* 
 Contributers:
 
-Edwin Kadavy
-Andrew Godley
+PowerBlade
+AG-Labs
 
 */
 
 var xo=true;
+var option=1;
 
 let gameBoard = {
 	squarsArray:	[
@@ -43,6 +44,7 @@ let gameBoard = {
 
 		return [gameFin, who]
 	},
+
 
 	sumRows: function(){
 		let rows = [0,0,0];
@@ -108,34 +110,41 @@ let gameBoard = {
 	}
 }
 
-// adding x or o
-$(document).ready(function(){
-	
-	$(".box").click( function(){
-		let sqaure = $(this).data('numberlk')
-		let currID = this.id;
-		let xVal = Math.floor((sqaure-1)/3);
-		let yVal = ((sqaure-1)%3);
+function winnerInfo(winner) {
+	document.getElementById("winner").innerHTML = winner + " has won the game";
+}
 
-		if (document.getElementById(currID).innerHTML==""){
-			if(xo==true){
-				document.getElementById(currID).innerHTML = "<p>X</p>";
-				gameBoard.squarsArray[yVal][xVal] = 1;
-				xo=!xo;
-			} else if (xo == false){
-				document.getElementById(currID).innerHTML = "<p>O</p>";
-				gameBoard.squarsArray[yVal][xVal] = - 1;
-				xo=!xo;
+// adding x or o
+if (option!==0) {
+	$(document).ready(function(){
+	
+		$(".box").click( function(){
+			let sqaure = $(this).data('numberlk')
+			let currID = this.id;
+			let yVal = Math.floor((sqaure-1)/3);
+			let xVal = ((sqaure-1)%3);
+			if (document.getElementById(currID).innerHTML==""){
+				if(xo==true){
+					document.getElementById(currID).innerHTML = "<p>X</p>";
+					gameBoard.squarsArray[yVal][xVal] = 1;
+					xo=!xo;
+				} else if (xo == false){
+					document.getElementById(currID).innerHTML = "<p>O</p>";
+					gameBoard.squarsArray[yVal][xVal] = - 1;
+					xo=!xo;
+				}
+				//win stuff here
+				let [end, winner] = gameBoard.winCheck();
+				if (end) {
+					winnerInfo(winner);
+					reset();
+				}
 			}
-			//win stuff here
-			let [end, winner] = gameBoard.winCheck();
-			if (end) {
-				alert(winner + " has won the game");
-				reset();
-			}
-		}
+			pcEasy();	
+		});
 	});
-});
+}
+
 
 function reset() {
 
@@ -151,21 +160,36 @@ function reset() {
 }
 
 
-/* playing againsthe computer */
-function pc(){
-	if (xo==false) {
-		while (1) {
-			var rNumV = Math.floor(Math.random() * 3);
+
+/* playing against the computer */
+function pcEasy(){
+	if (xo==false && option==2) {
+		var counter=0;
+		do {
+			
 			var rNumH = Math.floor(Math.random() * 3);
-			if (gameBoard.squarsArray[rNumH][rNumV] == 0) {
+			var rNumV = Math.floor(Math.random() * 3);
+			var chosenNum=3*(rNumH)+(rNumV)+1;
+			if (document.getElementById("c"+chosenNum).innerHTML=="") {
+				document.getElementById("c"+chosenNum).innerHTML="<p>O</p>";
 				gameBoard.squarsArray[rNumH][rNumV] = - 1;
 				xo=!xo;
 				break;
 			}
-		}
-		
-		
+			console.log(counter+=1);
+		} while (counter<10);
+		let [end, winner] = gameBoard.winCheck();
+			if (end) {
+				winnerInfo(winner);
+				reset();
+			}	
 	}
 }
 
+function pvp() {
+	option=1;
+}
 
+function pvc() {
+	option=2;
+}

@@ -1,29 +1,34 @@
 #board{
 	background: black;
-	height: 94vw;
-	width: 94vw;
-	max-height: 600px;
-	max-width: 600px;
-	margin: 3vw;
+	height: 310px;
+	width: 310px;
+	/* max-height: 600px; */
+	/* max-width: 600px; */
+	margin: 0 auto;
 	display: grid;
-	grid-template-columns: repeat(3,minmax(30vw,50vmax));
-	grid-template-rows: repeat(3,minmax(30vw,100px));
-	grid-gap: 2vw;
+	grid-template-columns: repeat(3,100px);
+	grid-template-rows: repeat(3,100px);
+	grid-gap: 5px;
 }
 
 .box{
 	background-color: grey;
+	display: inline;
 	/* padding: auto; */
 }
 
 .xoInput{
-	 font-size: 10vw; */
-	text-align: center; */
-	 margin: 50%; */
+	font-size: 50px;
+	text-align: center;
+	line-height: 0px;
+	font-family: Helvetica, Arial;
+	/* margin: 50%; */
 }
 
 #title{
+	font-family: Verdana, Arial;
 	text-align: center;
+	
 }
 
 /*testing */

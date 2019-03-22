@@ -8,12 +8,12 @@
 	display: grid;
 	grid-template-columns: repeat(3,1fr);
 	grid-template-rows: repeat(3,1fr);
-	grid-gap: 1vw;
+	grid-gap: 5px;
 	font-size: 10vw;
 	border: 10px blue; /*fix this */
 }
 
-.box{
+.box{ 
 	background-color: grey;
 	display: inline; 
 	font-size: 1em;
@@ -23,9 +23,9 @@
 	/* padding: auto; */
 }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 700px) {
 	.box {
-	   font-size: 84px;
+	   font-size: 75px;
 	}
   }
 
@@ -35,5 +35,13 @@
 	text-align: center;
 	
 }
+
+#winner {
+	text-align: center;
+}
+
+/* .choose {
+	font-size: 50px;
+} */
 
 /*testing */
